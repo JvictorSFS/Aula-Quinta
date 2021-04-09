@@ -1,39 +1,55 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void selecao(int Vet[],int n){
 
-    int Menor, aux;
+ int sorteio[5] = {9, 30, 75, 3, 42};
 
-    for(int i=0;i<n-1;i++){
-        Menor=i;
-        for(int j=i+1 ; j<n ; j++){
-            if(Vet[Menor] > Vet[j])
-                Menor=j;
+ void exibir_vetor(int V[], int n){
+   int i;
+   for(i=0; i<5; i++){
+     printf("%2d ", V[i]);
+   }
+   printf("\n");
+ }
+
+void ordenar_bolha(int V[], int n){
+  int i, j, aux;
+ for(i=0; i<n; i++){
+   printf("\n-----------------\n");
+    for(j=0; j<(n-1)-i; j++){
+      printf("%2d > %2d", V[j] , V[j+1] );
+        if( V[j] > V[j+1] ){
+          aux = V[j];
+          V[j] = V[j+1];
+          V[j+1] = aux;
+          printf("\t\t(troca) \t");
+          exibir_vetor(V, 5);
         }
-        if(i!=Menor){
-            aux=Vet[i];
-            Vet[i]=Vet[Menor];
-            Vet[Menor]=aux;
+        else{
+          printf("\t\t(troca)\n");
         }
     }
+ }
+
 }
 
-int main(){
+int main(void) {
 
-    int n=13;
-    int Vetor[] = {3,6,5,1,2,8,7,9,4,10,13,12,11};
+	int i;
 
-    selecao(Vetor,n);
+	printf("Antes da ordenação: \n");
+	for(i=0; i<5; i++){
+		printf("%d ", sorteio[i]);
+	}
+	
+	printf("\n\nExibir as trocas da ordenação:\n\n");
+	ordenar_bolha(sorteio, 5);
 
-    printf("\n\n ");
+	printf("\n\nDepois da ordenação: \n");
+	
+	for(i=0; i<5; i++){
+		printf("%d ", sorteio[i]);
+	}
 
-    for(int i=0;i<n;i++){
-        printf("%d - ",Vetor[i]);
-    }
-
-    printf("\n\n\n");
-
-    system("pause");
-    return 0;
+	printf("\n\n");
+  	return 0;
 }
