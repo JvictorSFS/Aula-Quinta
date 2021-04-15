@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int sorteio[5] = {9, 30, 75, 3, 42};
+void exibir_vetor(int V[], int n){
+   int i;
+   for(i=0; i<5; i++){
+     printf("%2d ", V[i]);
+   }
+   printf("\n");
+ }
+void selection_sort(int num[], int tam) { 
+  int i, j, min, aux;
+  for (i = 0; i < (tam-1); i++) 
+  {
+     min = i;
+     for (j = (i+1); j < tam; j++) {
+       if(num[j] < num[min]) 
+         min = j;
+     }
+     if (i != min) {
+       aux = num[i];
+       num[i] = num[min];
+       num[min] = aux;
+     }
+  }
+}
