@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+
+ int sorteio[5] = {9, 30, 75, 3, 42};
+
+ void exibir_vetor(int V[], int n){
+   int i;
+   for(i=0; i<5; i++){
+     printf("%2d ", V[i]);
+   }
+   printf("\n");
+ }
+
+void ordenar_bolha(int V[], int n){
+  int i, j, aux;
+ for(i=0; i<n; i++){
+   printf("\n-----------------\n");
+    for(j=0; j<(n-1)-i; j++){
+      printf("%2d > %2d", V[j] , V[j+1] );
+        if( V[j] > V[j+1] ){
+          aux = V[j];
+          V[j] = V[j+1];
+          V[j+1] = aux;
+          printf("\t\t(troca) \t");
+          exibir_vetor(V, 5);
+        }
+        else{
+          printf("\t\t(troca)\n");
+        }
+    }
+ }
+
+}
+
+int main(void) {
+
+	int i;
+
+	printf("Antes da ordenação: \n");
+	for(i=0; i<5; i++){
+		printf("%d ", sorteio[i]);
+	}
+	
+	printf("\n\nExibir as trocas da ordenação:\n\n");
+	ordenar_bolha(sorteio, 5);
+
+	printf("\n\nDepois da ordenação: \n");
+	
+	for(i=0; i<5; i++){
+		printf("%d ", sorteio[i]);
+	}
+
+	printf("\n\n");
+  	return 0;
+}
