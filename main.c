@@ -1,55 +1,56 @@
 #include <stdio.h>
-
-
- int sorteio[5] = {9, 30, 75, 3, 42};
-
- void exibir_vetor(int V[], int n){
-   int i;
-   for(i=0; i<5; i++){
-     printf("%2d ", V[i]);
-   }
-   printf("\n");
+#include <stdlib.h>
+ 
+// Define uma constante
+// Define a constant
+#define MAX 10
+ 
+// Protótipo da função de ordenação
+// Ordination function prototype
+void insertion_sort(int *a);
+ 
+// Função main
+// Main Function
+int main(int argc, char** argv)
+{
+ int i, vet[MAX];
+ 
+ // Lê MAX ou 10 valores
+ // Read MAX or 10 values
+ for(i = 0; i < MAX; i++)
+ {
+  printf("Digite um valor: ");
+  scanf("%d", &vet[i]);
  }
-
-void ordenar_bolha(int V[], int n){
-  int i, j, aux;
- for(i=0; i<n; i++){
-   printf("\n-----------------\n");
-    for(j=0; j<(n-1)-i; j++){
-      printf("%2d > %2d", V[j] , V[j+1] );
-        if( V[j] > V[j+1] ){
-          aux = V[j];
-          V[j] = V[j+1];
-          V[j+1] = aux;
-          printf("\t\t(troca) \t");
-          exibir_vetor(V, 5);
-        }
-        else{
-          printf("\t\t(troca)\n");
-        }
-    }
+ 
+ // Ordena os valores
+ // Order values
+ insertion_sort(vet);
+ 
+ // Imprime os valores ordenados
+ // Print values in order ascendant
+ printf("nnValores ordenadosn");
+ for(i = 0; i < MAX; i++)
+ {
+  printf("%dn", vet[i]);
  }
-
+ system("pause");
+ return 0;
 }
-
-int main(void) {
-
-	int i;
-
-	printf("Antes da ordenação: \n");
-	for(i=0; i<5; i++){
-		printf("%d ", sorteio[i]);
-	}
-	
-	printf("\n\nExibir as trocas da ordenação:\n\n");
-	ordenar_bolha(sorteio, 5);
-
-	printf("\n\nDepois da ordenação: \n");
-	
-	for(i=0; i<5; i++){
-		printf("%d ", sorteio[i]);
-	}
-
-	printf("\n\n");
-  	return 0;
+ 
+// Função de Ordenação por Inserção
+// Insertion sort function
+void insertion_sort(int *a)
+{
+ int i, j, tmp;
+  
+ for(i = 1; i < MAX; i++)
+ {
+  tmp = a[i];
+  for(j = i-1; j >= 0 && tmp < a[j]; j--)
+  {
+   a[j+1] = a[j];
+  }
+  a[j+1] = tmp;
+ }
 }
